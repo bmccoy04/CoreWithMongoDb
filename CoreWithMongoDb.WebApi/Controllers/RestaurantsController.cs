@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreWithMongoDb.WebApi.DataAccess;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreWithMongoDb.WebApi.Controllers
@@ -9,11 +10,24 @@ namespace CoreWithMongoDb.WebApi.Controllers
     [Route("api/[controller]")]
     public class RestaurantsController : Controller
     {
+        RestaurantRepo _restaurantRepo;
+        public RestaurantsController(){
+            _restaurantRepo = new RestaurantRepo();
+        }
+
         // GET api/Restaurants
         [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
+        public IActionResult Get()
+        {    
+            try
+            {
+                return Ok(_restaurantRepo.Get());
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw ex; 
+            }
         }
 
         // GET api/Restaurants/5
