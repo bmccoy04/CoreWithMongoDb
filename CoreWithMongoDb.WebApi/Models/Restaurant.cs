@@ -3,10 +3,11 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace CoreWithMongoDb.WebApi.Models
 {
+    [BsonIgnoreExtraElements]
     public class Restaurant
     {
         public ObjectId Id { get; set; }
-        
+
         [BsonElement("name")]
         public string Name { get; set; }
 
