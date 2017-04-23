@@ -11,7 +11,7 @@ namespace CoreWithMongoDb.WebApi.DataAccess
         IMongoDatabase _db;
 
         public RestaurantRepo(){
-            _client = new MongoClient("mongodb://testUser:testUserPassword@192.168.7.100:27017/test");
+            _client = new MongoClient("mongodb://testUser:testUserPassword@localhost:27017/test");
             _db = _client.GetDatabase("test");
         }
 
